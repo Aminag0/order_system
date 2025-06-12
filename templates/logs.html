@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Action Logs{% endblock %}
+{% block content %}
+<h1>Action Logs</h1>
+<table class="table table-sm">
+  <tr><th>Time</th><th>Action</th><th>By</th><th>Order ID</th></tr>
+  {% for log in logs %}
+  <tr>
+    <td>{{ log.timestamp }}</td>
+    <td>{{ log.action_type }}</td>
+    <td>{{ log.performed_by }}</td>
+    <td>{{ log.order_id or '-' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

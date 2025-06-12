@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Edit' if order else 'New' }} Order{% endblock %}
+{% block content %}
+<h1>{{ 'Edit' if order else 'New' }} Order</h1>
+<form method="post">
+  <div class="mb-2">
+    <label>Number of items</label>
+    <input name="num_items" type="number" class="form-control"
+           value="{{ order.num_items if order else '' }}" required>
+  </div>
+  <div class="mb-2">
+    <label>Delivery date</label>
+    <input name="delivery_date" type="date" class="form-control"
+           value="{{ order.delivery_date if order else '' }}" required>
+  </div>
+  <div class="mb-2">
+    <label>Sender name</label>
+    <input name="sender_name" class="form-control"
+           value="{{ order.sender_name if order else '' }}" required>
+  </div>
+  <div class="mb-2">
+    <label>Recipient name</label>
+    <input name="recipient_name" class="form-control"
+           value="{{ order.recipient_name if order else '' }}" required>
+  </div>
+  <div class="mb-2">
+    <label>Recipient address</label>
+    <textarea name="recipient_address" class="form-control"
+              required>{{ order.recipient_address if order else '' }}</textarea>
+  </div>
+  <button class="btn btn-primary">
+    {{ 'Update' if order else 'Create' }}
+  </button>
+  <a class="btn btn-secondary" href="{{ url_for('list_orders') }}">
+    Cancel
+  </a>
+</form>
+{% endblock %}
